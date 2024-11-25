@@ -1,6 +1,6 @@
 # OpenWings OpenData on Amazon Web Services
 
-![OpenWings Logo](img/OpenWingsProject-logo-small.png "OpenWings Logo")
+<img src="img/OpenWingsProject-logo-small.png" width="50" height="50" />
 
 The OpenWings Project is a scientific research project having the goal of inferring a time-calibrated [phylogeny]() for all of the world's ~10,000 bird species (class [Aves](https://en.wikipedia.org/wiki/Bird)).  To generate this phylogeny, we have collected DNA sequence data from genomic libraries that have been enriched for a class of genomic markers known as [ultra-conserved elements](https://en.wikipedia.org/wiki/Ultraconserved_element) or UCEs. The enrichment process effectively increases the concentration of UCE loci relative to the rest of the genome, and we sequence the enriched product.
 
