@@ -90,7 +90,7 @@ unset IFS
 [ -n "${saved_IFS+set}" ] && { IFS=$saved_IFS; unset saved_IFS; }
 # Do not edit above
 ```
-This will iterate over every line in the CSV file you downloaded (skipping the header), and it will create and run the necessary commands to download the R1 and R2 files to the directory in which you run it.  You should not need to install anything other than the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) for this to work on most Unix-like operating systems.  If you are working on Windows, you can use the Windows Subsystem for Linux ((WSL)[https://learn.microsoft.com/en-us/windows/wsl/install]) to do the same.
+This will iterate over every line in the CSV file you downloaded (skipping the header), and it will create and run the necessary commands to download the R1 and R2 files to the directory in which you run it.  You should not need to install anything other than the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) for this to work on most Unix-like operating systems.  If you are working on Windows, you can use the Windows Subsystem for Linux ([WSL](https://learn.microsoft.com/en-us/windows/wsl/install])) to do the same.
 
 ## After downloading the data
 
