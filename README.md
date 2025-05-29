@@ -37,7 +37,7 @@ Before downloading any data, install the [AWS CLI tool](https://aws.amazon.com/c
 
 ### Downloading a small number of files
 
-The data are temporarily stored (see [NCBI SRA Identifiers](#ncbi-sra-identifiers)) on Amazon Web Services in their [S3 Cloud Object Storage system](https://aws.amazon.com/s3/). As such, you can easily use tools like the [AWS CLI tool](https://aws.amazon.com/cli/) to view different buckets in which the data are stored (corresponding to sequencing runs), as well as all of the different files within a bucket. For instance, after [installing the AWS CLI tool](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) here is an example session:
+The data are temporarily stored (see [NCBI SRA Identifiers](#ncbi-sra-identifiers) on Amazon Web Services in their [S3 Cloud Object Storage system](https://aws.amazon.com/s3/). As such, you can easily use tools like the [AWS CLI tool](https://aws.amazon.com/cli/) to view different buckets in which the data are stored (corresponding to sequencing runs), as well as all of the different files within a bucket. For instance, after [installing the AWS CLI tool](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) here is an example session:
 ```bash
 # be sure that the AWS CLI tool is installed and configured correctly.
 # Show the contents of the openwings project:
@@ -117,9 +117,9 @@ We request that researchers using these resources provide us with information re
 
 ## NCBI SRA identifiers
 
-As we vet the individual data files and ensure that their taxonomic descriptions are accurate, we will upload validated data to the [NCBI SRA](https://www.ncbi.nlm.nih.gov/sra), and we will update the metadata provided here to assign correct SRA identifiers to file names.
+As we validate the individual data files and ensure that their taxonomic descriptions and sequence data are accurate, we will upload validated data to the [NCBI SRA](https://www.ncbi.nlm.nih.gov/sra), and we will update the metadata available from [https://www.openwings.org/data](https://www.openwings.org/data) to assign correct SRA identifiers to file names.
 
-**If you use these data, please do not also submit these data to the NCBI SRA - you did not generate them.**
+**If you use these data, please do not submit them to the NCBI SRA - you did not generate them.**
 
 ## Major participating institutions
 
