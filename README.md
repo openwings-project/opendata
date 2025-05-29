@@ -1,14 +1,14 @@
 # <img src="img/OpenWingsProject-logo-small.png" width="50" height="50" /> OpenWings OpenData on Amazon Web Services
 
-The OpenWings Project is a scientific research project having the goal of inferring a time-calibrated [phylogeny]() for all of the world's ~10,000 bird species (class [Aves](https://en.wikipedia.org/wiki/Bird)).  To generate this phylogeny, we have collected DNA sequence data from genomic libraries that have been enriched for a class of genomic markers known as [ultra-conserved elements](https://en.wikipedia.org/wiki/Ultraconserved_element) or UCEs. The enrichment process effectively increases the concentration of UCE loci relative to the rest of the genome, and we sequence the enriched product.
+The OpenWings Project is a scientific research project having the goal of inferring a time-calibrated [phylogeny]() for all of the world's ~10,000 bird species (class [Aves](https://en.wikipedia.org/wiki/Bird)).  To generate this phylogeny, we have collected DNA sequence data from genomic libraries that have been enriched for a class of genomic markers known as [ultra-conserved elements](https://en.wikipedia.org/wiki/Ultraconserved_element) or UCEs. The enrichment process effectively increases the concentration of UCE loci relative to the rest of the genome, and we sequence the enriched product.  More details on the UCE enrichment process can be found [in this publication](https://www.faircloth-lab.org/assets/pdf/faircloth-et-al-2012-systematic-biology.pdf).
 
-The set of 4,434 loci targeted for this project (5Kv2A and 5Kv2B) are a slightly modified subset of UCE loci commonly used in other studies of birds.  More information on the target enrichment baits used for this study can be found in the [OpenWings Bait repository](https://github.com/openwings-project/baits).
+The set of 4,434 loci targeted for this project (5Kv2A and 5Kv2B) are a slightly modified subset of UCE loci commonly used in other studies of birds (e.g. [Oliveros et al. 2018](https://www.faircloth-lab.org/assets/pdf/oliveros-et-al-2019-pnas.pdf)).  More information on the target enrichment baits used for this study can be found in the [OpenWings Bait repository](https://github.com/openwings-project/baits).
 
 ## About the data
 
-We are providing the "raw" reads that we have generated from genomic libraries enriched for UCE loci. It is important to note that these data **HAVE NOT** been rigorously quality controlled.  The taxonomy of the individuals sequenced also **HAS NOT** been standardized.
+We are providing the "raw" reads that we have generated from genomic libraries enriched for UCE loci. It is important to note that these data **HAVE NOT** been rigorously quality controlled.  The taxonomy of the individuals sequenced also **HAS NOT** been verified or standardized.  Those processes are ongoing.
 
-What this means is that we think these data represent the species indicated and the loci targeted, but we have not performed significant analyses of these data to verify that this is the case. Verification is an ongoing process. This also means some species labels **could be incorrect**.
+What this means is that we think these data represent the species indicated and the loci targeted, but we have not performed analyses to verify that this is the case. Verification is an ongoing process. This also means some species labels **could be incorrect**.
 
 ## Data format
 
@@ -28,18 +28,18 @@ The file naming convention is:
 | [DNA_Plate]        | This is the DNA extraction plate in which a particular specimen was placed.  Values of `TISS-`, `LOAN-`, `INTL-` correspond to tissues, and values of `TP-` correspond to toepads.                                                                            |
 | [DNA_Row]          | This is the row location of the sample in the DNA extraction plate.                                                                                                                                                                                     |
 | [DNA_Column]       | This is the column location of the sample in the DNA extraction plate.                                                                                                                                                                                  |
-| [Genus]-[species]  | This is the likely species of the individual from which a tissue/toepad was collected.  The taxonomy of these individuals has not necessarily been standardized, because these values were given by the institution providing the tissue.               |
+| [Genus]-[species]  | This is the likely species of the individual from which a tissue/toepad was collected.  The taxonomy of these individuals has not necessarily been standardized because these values were given by the institution providing the tissue.               |
 | [Read]             | This is a value of `R1` for read 1 and `R2` for read 2.                                                                                                                                                                                                 |
 
 ## Downloading the data
 
-Before downloading any data, install the [AWS CLI tool](https://aws.amazon.com/cli/) for your operating system.  Advanced users may use other options (e.g. [boto](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html), etc.).  The bucket in which all files are stored is <tbd>.
+Before downloading any data, install the [AWS Command Line Interface](https://aws.amazon.com/cli/) for your operating system.  Advanced users may also use other options (e.g. [boto](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html), etc.), but these are not described here.  The bucket in which all files are stored is <tbd>.
 
 ### Downloading a small number of files
 
-The data are temporarily stored (see [NCBI SRA Identifiers](#ncbi-sra-identifiers) on Amazon Web Services in their [S3 Cloud Object Storage system](https://aws.amazon.com/s3/). As such, you can easily use tools like the [AWS CLI tool](https://aws.amazon.com/cli/) to view different buckets in which the data are stored (corresponding to sequencing runs), as well as all of the different files within a bucket. For instance, after [installing the AWS CLI tool](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) here is an example session:
+The data are temporarily stored (see [NCBI SRA Identifiers](#ncbi-sra-identifiers)) on Amazon Web Services in their [S3 Cloud Object Storage system](https://aws.amazon.com/s3/). As such, you can easily use tools like the [AWS Command Line Interface](https://aws.amazon.com/cli/) to view different buckets in which the data are stored (corresponding to sequencing runs), as well as all of the files within a given bucket. For instance, after [installing the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) here is an example session:
 ```bash
-# be sure that the AWS CLI tool is installed and configured correctly.
+# be sure that the AWS CLI is installed and configured correctly.
 # Show the contents of the openwings project:
 aws s3 ls s3://<tbd>/
 
@@ -54,9 +54,9 @@ aws s3 ls s3://<tbd>/2024-openwings-FB01Q001
 # Crypturellus-transfasciatus.R1.fq.gz library.
 #
 # To download individual files to the local directory in which you are working, you can:
-aws s3 cp s3://<tbd>/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R1.fq.gz B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R1.fq.gz ./
+aws s3 cp s3://<tbd>/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R1.fq.gz ./
 
-aws s3 cp s3://<tbd>/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R2.fq.gz B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R2.fq.gz ./
+aws s3 cp s3://<tbd>/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R2.fq.gz ./
 # this gets's the R1 (read 1) and R2 (read 2) files for this individual 
 # (B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus) from S3 and
 # saves them locally on your machine.
@@ -64,40 +64,43 @@ aws s3 cp s3://<tbd>/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellu
 
 ### Downloading a larger number of files
 
-This is rather cumbersome if you need a significant number of files or if you do not feel like browsing around the directory structure, so there is another way that you can browse, select, get a list of files, and download that list of files you would like. We've setup an online spreadsheet of samples that you can browse, filter, etc.  at [https://www.openwings.org/data](https://www.openwings.org/data). Once you have selected the samples that you want, download the resulting CSV file.  There is a quick example in this short video:
+This is rather cumbersome if you need a significant number of files or if you do not feel like browsing around the directory structure, so there is another way that you can browse, select, get a list of files, and download that list of files. We've setup an online spreadsheet of samples that you can browse, filter, etc. at [https://www.openwings.org/data](https://www.openwings.org/data). Once you have selected the samples that you want, download the resulting CSV file.  See the quick example in this short video:
 
 [![Image of and link to youtube video](https://img.youtube.com/vi/XcHEaDy9Zxc/0.jpg)](https://www.youtube.com/watch?v=XcHEaDy9Zxc)
 
-After you download the CSV file (it must be CSV), **do not modify it** and place it in the directory where you would like to store your data. Then, navigate to that directory on the command line, and run the following shell script:
+After you download the CSV file (it must be CSV), **do not modify it** and place it in the directory where you would like to store your data. Then, navigate to that directory on the command line, and run the following shell script (be sure you have [installed the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)):
 ```bash
 # Change this to the name of the file that you downloaded.
 # This should be the default file name.
 input="OpenWings-Libraries-Table1.csv"
 
 # Do not edit below
+# Store whatever IFS currently is (from Kusalananda on stackexchange)
+unset saved_IFS
+[ -n "${IFS+set}" ] && saved_IFS=$IFS
+# Parse the file
 while IFS=, read f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11; 
 do 
     echo "Working on ${f1}";
     aws s3 cp <url>/${f8}/${f9} ./;
     aws s3 cp <url>/${f8}/${f10} ./;
 done < <( tail -n +2 "$input")
+# Restore whatever IFS originally was
+unset IFS
+[ -n "${saved_IFS+set}" ] && { IFS=$saved_IFS; unset saved_IFS; }
 # Do not edit above
 ```
-This will iterate over every line in the CSV file (it will skip the header), and it will create and run the necessary commands to download the R1 and R2 files to the directory you run it in.
+This will iterate over every line in the CSV file you downloaded (skipping the header), and it will create and run the necessary commands to download the R1 and R2 files to the directory you run it in.  You should not need to install anything other than the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) for this to work.
 
 ## After downloading the data
 
-Once you download the data, the easiest way to begin working with them is to follow the [Phyluce Tutorial](https://phyluce.readthedocs.io/en/latest/tutorials/tutorial-1.html) that describes how to process and analyze raw UCE sequencing data.  You can substitute the files that you have download for files that are used as part of that tutorial.
+Once you download the data, the easiest way to begin working with them is to follow the [Phyluce Tutorial](https://phyluce.readthedocs.io/en/latest/tutorials/tutorial-1.html) which describes how to process and analyze UCE sequencing data from the raw reads that you just downloaded. You should substitute the files that you have download for files that are used as examples in that tutorial.
 
-## Data license
+## Data use policy
 
-Data available from the OpenWings project are released under a [Creative Commons](https://creativecommons.org) [CC-0](https://creativecommons.org/public-domain/cc0/) license.
+The primary investigators of OpenWings request the right to publish studies using the data collected at taxonomic levels above order (e.g. interordinal and higher levels), and to infer and time-calibrate phylogenies for taxonomic levels above order as well as from all bird species **before these data are used by other investigators for similar purposes**.  This is in keeping with the [Ft. Lauderdale Agreement](https://www.sanger.ac.uk/wp-content/uploads/fortlauderdalereport.pdf).
 
-## Data restrictions
-
-Although the data are released under [CC-0](https://creativecommons.org/public-domain/cc0/) license, the primary investigators of OpenWings request the right to publish studies using the data collected at taxonomic levels above order (e.g. interordinal and higher levels), and to infer and time-calibrate phylogenies using the entire complement of data collected from all bird species **before these data are used by other investigators for similar purposes**.  This is in keeping with the so-called [Ft. Lauderdale Agreement](https://www.sanger.ac.uk/wp-content/uploads/fortlauderdalereport.pdf).
-
-Data downloaded for studies at taxonomic levels below order may be used for any purpose.
+Data downloaded for studies at taxonomic levels below the ordinal level may be used for any purpose.
 
 ## If you use these data... (Part 1)
 
