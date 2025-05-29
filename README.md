@@ -33,7 +33,7 @@ The file naming convention is:
 
 ## Downloading the data
 
-The data are temporarily stored (see #NCBI_SRA_Identifiers for additional information) on Amazon Web Services in their [S3]() Cloud Object Storage system.  As such, you can use tools like the [AWS CLI tool](https://aws.amazon.com/cli/) to view different buckets in which the data are stored (corresponding to sequencing runs), as well as all of the different files within a bucket. For instance, after [installing the AWS CLI tool](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) here is a example session:
+The data are temporarily stored (see [NCBI SRA Identifiers](#NCBI_SRA_identifiers) for additional information) on Amazon Web Services in their [S3](https://aws.amazon.com/s3/) Cloud Object Storage system.  As such, you can use tools like the [AWS CLI tool](https://aws.amazon.com/cli/) to view different buckets in which the data are stored (corresponding to sequencing runs), as well as all of the different files within a bucket. For instance, after [installing the AWS CLI tool](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) here is an example session:
 ```bash
 # be sure that the AWS CLI tool is installed and configured correctly.
 # Show the contents of the openwings project:
@@ -43,18 +43,31 @@ aws s3 ls s3://<tbd>/
 aws s3 ls s3://<tbd>/2024-openwings-FB01Q001
 
 # which returns:
+...<tbd>...
 
 
 # let's say you want to download the data for the B-66112.LSUMZ.TISS-3:A1.
 # Crypturellus-transfasciatus.R1.fq.gz library.
 #
-# To download individual files you can:
-aws s3 cp s3://<tbd>/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R1.fq.gz B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R1.fq.gz
+# To download individual files to the local directory in which you are working, you can:
+aws s3 cp s3://<tbd>/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R1.fq.gz B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R1.fq.gz ./
 
-aws s3 cp s3://<tbd>/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R2.fq.gz B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R2.fq.gz
-# this gets's the R1 (read 1) and R2 (read 2) files for this individual from S3 and
+aws s3 cp s3://<tbd>/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R2.fq.gz B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R2.fq.gz ./
+# this gets's the R1 (read 1) and R2 (read 2) files for this individual 
+# (B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus) from S3 and
 # saves them locally on your machine.
 ```
+
+This is rather cumbersome if you need a significant number of files, so there is another way that you can browse, select, get a list, and download the list of files that you would like.  We've setup an online spreadsheet of samples that you can browser, filter, etc.  Once you do that, download the resulting CSV file - like you can see in this short video:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XcHEaDy9Zxc?si=zFWtBez18rwOAH1e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+After you download the CSV file (it must be CSV), place it in the directory where you would like to store your data, navigate to that directory on the command line, and run the following small shell script:
+```bash
+
+```
+
+
 
 may be downloaded as individual files using the [AWS CLI tool](https://aws.amazon.com/cli/). To identify the taxa for which you would like to download data, please visit the [OpenWings Sequence Database](http://openwings.org/sequence-data/) and identify the taxa for which you would like to download data.
 
@@ -94,13 +107,13 @@ We request that researchers using these resources provide us with information re
 
 [OpenWings Data Use Form](https://lsu.formstack.com/forms/openwings_data_use)
 
-## NCBI SRA Identifiers
+## NCBI SRA identifiers
 
 As we vet the individual data files and ensure that their taxonomic descriptions are accurate, we will upload validated data to the [NCBI SRA](https://www.ncbi.nlm.nih.gov/sra), and we will update the metadata provided here to assign correct SRA identifiers to file names.
 
 **If you use these data, please do not also submit these data to the NCBI SRA - you did not generate them.**
 
-## Major Participating Institutions
+## Major participating institutions
 
 * American Museum of Natural History (Brian Smith)
 * Australian National Wildlife Collection (Leo Joseph)
