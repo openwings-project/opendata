@@ -33,7 +33,11 @@ The file naming convention is:
 
 ## Downloading the data
 
-The data are temporarily stored (see [NCBI SRA Identifiers](#NCBI_SRA_identifiers) for additional information) on Amazon Web Services in their [S3](https://aws.amazon.com/s3/) Cloud Object Storage system.  As such, you can use tools like the [AWS CLI tool](https://aws.amazon.com/cli/) to view different buckets in which the data are stored (corresponding to sequencing runs), as well as all of the different files within a bucket. For instance, after [installing the AWS CLI tool](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) here is an example session:
+Before downloading any data, install the [AWS CLI tool](https://aws.amazon.com/cli/) for your operating system.  Advanced users may use other options (e.g. [boto](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html), etc.).  The bucket in which all files are stored is <tbd>.
+
+### Downloading a small number of files
+
+The data are temporarily stored (see [NCBI SRA Identifiers](#ncbi-sra-identifiers)) on Amazon Web Services in their [S3 Cloud Object Storage system](https://aws.amazon.com/s3/). As such, you can easily use tools like the [AWS CLI tool](https://aws.amazon.com/cli/) to view different buckets in which the data are stored (corresponding to sequencing runs), as well as all of the different files within a bucket. For instance, after [installing the AWS CLI tool](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) here is an example session:
 ```bash
 # be sure that the AWS CLI tool is installed and configured correctly.
 # Show the contents of the openwings project:
@@ -58,13 +62,14 @@ aws s3 cp s3://<tbd>/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellu
 # saves them locally on your machine.
 ```
 
-This is rather cumbersome if you need a significant number of files, so there is another way that you can browse, select, get a list, and download the list of files that you would like.  We've setup an online spreadsheet of samples that you can browser, filter, etc.  Once you do that, download the resulting CSV file - like you can see in this short video:
+This is rather cumbersome if you need a significant number of files or if you do not feel like browsing around the directory structure, so there is another way that you can browse, select, get a list of files, and download that list of files you would like. We've setup an online spreadsheet of samples that you can browse, filter, etc.  at [https://www.openwings.org/data](https://www.openwings.org/data). Once you have selected the samples that you want, download the resulting CSV file.  There is a quick example in this short video:
 
 [![Image of and link to youtube video](https://img.youtube.com/vi/XcHEaDy9Zxc/0.jpg)](https://www.youtube.com/watch?v=XcHEaDy9Zxc)
 
-After you download the CSV file (it must be CSV), **do not modify it** and place it in the directory where you would like to store your data, navigate to that directory on the command line, and run the following small shell script:
+After you download the CSV file (it must be CSV), **do not modify it** and place it in the directory where you would like to store your data. Then, navigate to that directory on the command line, and run the following shell script:
 ```bash
-# Chat this to the name of the file that you downloaded
+# Change this to the name of the file that you downloaded.
+# This should be the default file name.
 input="OpenWings-Libraries-Table1.csv"
 
 # Do not edit below
@@ -74,8 +79,9 @@ do
     aws s3 cp <url>/${f8}/${f9} ./;
     aws s3 cp <url>/${f8}/${f10} ./;
 done < <( tail -n +2 "$input")
- # Do not edit above
+# Do not edit above
 ```
+This will iterate over every line in the CSV file (it will skip the header), and it will create and run the necessary commands to download the R1 and R2 files to the directory you run it in.
 
 ## Data license
 
