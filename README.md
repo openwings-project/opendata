@@ -60,7 +60,7 @@ aws s3 cp s3://<tbd>/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellu
 
 This is rather cumbersome if you need a significant number of files, so there is another way that you can browse, select, get a list, and download the list of files that you would like.  We've setup an online spreadsheet of samples that you can browser, filter, etc.  Once you do that, download the resulting CSV file - like you can see in this short video:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XcHEaDy9Zxc?si=zFWtBez18rwOAH1e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[![Image of and link to youtube video](https://img.youtube.com/vi/XcHEaDy9Zxc/0.jpg)](https://www.youtube.com/watch?v=XcHEaDy9Zxc)
 
 After you download the CSV file (it must be CSV), place it in the directory where you would like to store your data, navigate to that directory on the command line, and run the following small shell script:
 ```bash
