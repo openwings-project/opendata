@@ -6,9 +6,9 @@ The set of 4,434 loci targeted for this project (5Kv2A and 5Kv2B) are a slightly
 
 ## About the data
 
-We are providing the "raw" reads that we have generated from genomic libraries enriched for UCE loci. It is important to note that these data **HAVE NOT** been rigorously quality controlled.  The taxonomy of the individuals sequenced also **HAVE NOT** been standardized.
+We are providing the "raw" reads that we have generated from genomic libraries enriched for UCE loci. It is important to note that these data **HAVE NOT** been rigorously quality controlled.  The taxonomy of the individuals sequenced also **HAS NOT** been standardized.
 
-What this means is that we think these data represent the species indicated and the loci targeted, but we have not performed significant analyses of these data to verify that this is the case. Verification is an ongoing process. This also means some species labels could be incorrect.
+What this means is that we think these data represent the species indicated and the loci targeted, but we have not performed significant analyses of these data to verify that this is the case. Verification is an ongoing process. This also means some species labels **could be incorrect**.
 
 ## Data format
 
@@ -21,17 +21,46 @@ The file naming convention is:
 ```
 [Museum_Accession].[Museum_Code].[DNA_Plate]:[DNA_Row][DNA_Column].[Genus]-[species].[Read]
 ```
-|   |   |
-| ------------------ | ---- |
-| [Museum_Accession] | This is the accession number of the particular tissue used for DNA extraction, target enrichment, and DNA sequencing. This may correspond to a tissue sample in a collection *OR* to a specimen/skin within a given collection.|
-| [Museum_Code]      | This is the INSDC code for the institution providing the tissue/toepad used for DNA extraction.  Generally speaking, the combination of the [Museum_Code] and [Museum_Accession] should be referenced every time that data from this specimen are used.|
-| [DNA_Plate]        | This is the DNA extraction plate in which a particular specimen was placed.  Values of `TISS-` and `LOAN-` correspond to tissues, and values of `TP-` correspond to toepads.|
-| [DNA_Row]          | This is the row location of the sample in the DNA extraction plate.|
-| [DNA_Column]       | This is the column location of the sample in the DNA extraction plate.|
-| [Genus]-[species]  | This is the likely species of the individual from which a tissue/toepad was collected.  The taxonomy of these individuals has not necessarily been standardized, because these values were given by the institution providing the tissue.|
-| [Read]             | This is a value of `R1` for read 1 and `R2` for read 2. |
+|                    |                                                                                                                                                                                                                                                         |
+|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Museum_Accession] | This is the accession number of the particular tissue used for DNA extraction, target enrichment, and DNA sequencing. This may correspond to a tissue sample in a collection *OR* to a specimen/skin within a given collection.                         |
+| [Museum_Code]      | This is the INSDC code for the institution providing the tissue/toepad used for DNA extraction.  Generally speaking, the combination of the [Museum_Code] and [Museum_Accession] should be referenced every time that data from this specimen are used. |
+| [DNA_Plate]        | This is the DNA extraction plate in which a particular specimen was placed.  Values of `TISS-`, `LOAN-`, `INTL-` correspond to tissues, and values of `TP-` correspond to toepads.                                                                            |
+| [DNA_Row]          | This is the row location of the sample in the DNA extraction plate.                                                                                                                                                                                     |
+| [DNA_Column]       | This is the column location of the sample in the DNA extraction plate.                                                                                                                                                                                  |
+| [Genus]-[species]  | This is the likely species of the individual from which a tissue/toepad was collected.  The taxonomy of these individuals has not necessarily been standardized, because these values were given by the institution providing the tissue.               |
+| [Read]             | This is a value of `R1` for read 1 and `R2` for read 2.                                                                                                                                                                                                 |
 
-## Downloading/mirroring the data
+## Downloading the data
+
+The data are temporarily stored (see #NCBI_SRA_Identifiers for additional information) on Amazon Web Services in their [S3]() Cloud Object Storage system.  As such, you can use tools like the [AWS CLI tool](https://aws.amazon.com/cli/) to view different buckets in which the data are stored (corresponding to sequencing runs), as well as all of the different files within a bucket. For instance, after [installing the AWS CLI tool](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) here is a example session:
+```bash
+# be sure that the AWS CLI tool is installed and configured correctly.
+# Show the contents of the openwings project:
+aws s3 ls s3://<tbd>/
+
+# now that we have a list of buckets/sequencing runs, let's look inside of each sequencing run to see what files are included in that run:
+aws s3 ls s3://<tbd>/2024-openwings-FB01Q001
+
+# which returns:
+
+
+# let's say you want to download the data for the B-66112.LSUMZ.TISS-3:A1.
+# Crypturellus-transfasciatus.R1.fq.gz library.
+#
+# To download individual files you can:
+aws s3 cp s3://<tbd>/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R1.fq.gz B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R1.fq.gz
+
+aws s3 cp s3://<tbd>/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R2.fq.gz B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R2.fq.gz
+# this gets's the R1 (read 1) and R2 (read 2) files for this individual from S3 and
+# saves them locally on your machine.
+```
+
+may be downloaded as individual files using the [AWS CLI tool](https://aws.amazon.com/cli/). To identify the taxa for which you would like to download data, please visit the [OpenWings Sequence Database](http://openwings.org/sequence-data/) and identify the taxa for which you would like to download data.
+
+You can do this by interacting with the spreadsheet interface to filter/subset/subsample the data to include those taxa in which you are interested.  Once you have subset the spreadsheet, download a CSV-formatted version of your results that retains *at least* the columns `Lib
+
+
 
 ## Data license
 
@@ -43,17 +72,17 @@ Although the data are released under [CC-0](https://creativecommons.org/public-d
 
 ## If you use these data... (Part 1)
 
-Following the general standard for the field of avian phylogenetics, please include a table listing the institution/museum code and the tissue/specimen number for each OpenWings sample that you use. Typically, such a table will also include the species name, and other information associated with each sample.
+Following the general standard for the field of avian phylogenetics, please include a table listing the institution/museum code and the tissue/specimen number for each OpenWings sample that you use. Typically, such a table will also include the species name and other information associated with each sample.
 
 
 ## If you use these data... (Part 2)
 Studies that use data, libraries, or other resources generated by OpenWings should acknowledge support from the "OpenWings Project" and should include references to the following National Science Foundation grants:
-|   |
-| ------------------ |
-|DEB-1655559|
-|DEB-1655624|
-|DEB-1655683|
-|DEB-1655736|
+| Grant #s    |
+|-------------|
+| DEB-1655559 |
+| DEB-1655624 |
+| DEB-1655683 |
+| DEB-1655736 |
 
 We suggest something similar to the following text for inclusion in an Acknowledgements section (or similar) of a manuscript that uses OpenWings data:
 
@@ -61,8 +90,15 @@ We suggest something similar to the following text for inclusion in an Acknowled
 
 ## If you use these data... (Part 3)
 
-We request that authors of research products using these resources return information to OpenWings regarding publication/presentation of their work so that we can track the impact of this research project.  We will provide easy-to-use forms for this purpose.
+We request that researchers using these resources provide us with information regarding their use of these data so that we can track the impact of this research project.  Please complete the:
 
+[OpenWings Data Use Form](https://lsu.formstack.com/forms/openwings_data_use)
+
+## NCBI SRA Identifiers
+
+As we vet the individual data files and ensure that their taxonomic descriptions are accurate, we will upload validated data to the [NCBI SRA](https://www.ncbi.nlm.nih.gov/sra), and we will update the metadata provided here to assign correct SRA identifiers to file names.
+
+**If you use these data, please do not also submit these data to the NCBI SRA - you did not generate them.**
 
 ## Major Participating Institutions
 
