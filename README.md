@@ -37,7 +37,7 @@ Before downloading any data, install the [AWS Command Line Interface](https://aw
 
 ### Downloading a small number of files
 
-The data are temporarily stored (see [NCBI SRA Identifiers](#ncbi-sra-identifiers)) on Amazon Web Services in their [S3 Cloud Object Storage system](https://aws.amazon.com/s3/). As such, you can easily use tools like the [AWS Command Line Interface](https://aws.amazon.com/cli/) to view different buckets in which the data are stored (corresponding to sequencing runs), as well as all of the files within a given bucket. For instance, after [installing the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) here is an example session:
+The data are temporarily stored (see [NCBI SRA Identifiers](#ncbi-sra-identifiers)) on Amazon Web Services in their [S3 Cloud Object Storage system](https://aws.amazon.com/s3/). As such, you can easily use tools like the [AWS Command Line Interface](https://aws.amazon.com/cli/) to view different buckets in which the data are stored (corresponding to sequencing runs), as well as all of the files within a given bucket. For instance, after [installing the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html), here is an example session:
 ```bash
 # be sure that the AWS CLI is installed and configured correctly.
 # Show the contents of the openwings project:
@@ -55,7 +55,7 @@ aws s3 ls s3://<tbd>/2024-openwings-FB01Q001
 #
 # To download individual files to the local directory in which you are working, you can:
 aws s3 cp s3://<tbd>/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R1.fq.gz ./
-
+# followed by
 aws s3 cp s3://<tbd>/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R2.fq.gz ./
 # this gets's the R1 (read 1) and R2 (read 2) files for this individual 
 # (B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus) from S3 and
@@ -64,7 +64,7 @@ aws s3 cp s3://<tbd>/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellu
 
 ### Downloading a larger number of files
 
-This is rather cumbersome if you need a significant number of files or if you do not feel like browsing around the directory structure, so there is another way that you can browse, select, get a list of files, and download that list of files. We've setup an online spreadsheet of samples that you can browse, filter, etc. at [https://www.openwings.org/data](https://www.openwings.org/data). Once you have selected the samples that you want, download the resulting CSV file.  See the quick example in this short video:
+This is rather cumbersome if you need a significant number of files or do not feel like browsing around the directory structure, so there is another way that you can browse, select files, and download a list of those files. We've setup an interactive spreadsheet of samples that you can browse, filter, etc. at [https://www.openwings.org/data](https://www.openwings.org/data). Once you have selected the samples that you want, download the resulting CSV file.  See the quick example in this short video of how you can select the sample data you want:
 
 [![Image of and link to youtube video](https://img.youtube.com/vi/XcHEaDy9Zxc/0.jpg)](https://www.youtube.com/watch?v=XcHEaDy9Zxc)
 
