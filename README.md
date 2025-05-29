@@ -62,18 +62,20 @@ This is rather cumbersome if you need a significant number of files, so there is
 
 [![Image of and link to youtube video](https://img.youtube.com/vi/XcHEaDy9Zxc/0.jpg)](https://www.youtube.com/watch?v=XcHEaDy9Zxc)
 
-After you download the CSV file (it must be CSV), place it in the directory where you would like to store your data, navigate to that directory on the command line, and run the following small shell script:
+After you download the CSV file (it must be CSV), **do not modify it** and place it in the directory where you would like to store your data, navigate to that directory on the command line, and run the following small shell script:
 ```bash
+# Chat this to the name of the file that you downloaded
+input="OpenWings-Libraries-Table1.csv"
 
+# Do not edit below
+while IFS=, read f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11; 
+do 
+    echo "Working on ${f1}";
+    aws s3 cp <url>/${f8}/${f9} ./;
+    aws s3 cp <url>/${f8}/${f10} ./;
+done < <( tail -n +2 "$input")
+ # Do not edit above
 ```
-
-
-
-may be downloaded as individual files using the [AWS CLI tool](https://aws.amazon.com/cli/). To identify the taxa for which you would like to download data, please visit the [OpenWings Sequence Database](http://openwings.org/sequence-data/) and identify the taxa for which you would like to download data.
-
-You can do this by interacting with the spreadsheet interface to filter/subset/subsample the data to include those taxa in which you are interested.  Once you have subset the spreadsheet, download a CSV-formatted version of your results that retains *at least* the columns `Lib
-
-
 
 ## Data license
 
