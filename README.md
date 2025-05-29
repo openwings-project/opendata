@@ -98,7 +98,7 @@ Once you download the data, the easiest way to begin working with them is to fol
 
 ## Data use policy
 
-The primary investigators of OpenWings request the right to publish studies using the data collected at taxonomic levels above order (e.g. interordinal and higher levels), and to infer and time-calibrate phylogenies for taxonomic levels above order as well as from all bird species **before these data are used by other investigators for similar purposes**.  This is in keeping with the [Ft. Lauderdale Agreement](https://www.sanger.ac.uk/wp-content/uploads/fortlauderdalereport.pdf).
+The primary investigators of OpenWings request the right to publish studies using the data collected at taxonomic levels above order (e.g. interordinal and higher levels) and to infer and time-calibrate phylogenies for taxonomic levels above order as well as from all bird species **before these data are used by other investigators for similar purposes**.  This is in keeping with the [Ft. Lauderdale Agreement](https://www.sanger.ac.uk/wp-content/uploads/fortlauderdalereport.pdf).
 
 ### If you use these data... (Part 1)
 
