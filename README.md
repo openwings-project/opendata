@@ -42,8 +42,10 @@ The data are temporarily stored (see [NCBI SRA Identifiers](#ncbi-sra-identifier
 # be sure that the AWS CLI is installed and configured correctly.
 # Show the contents of the openwings project:
 aws s3 ls s3://openwings-project/data/
-
-# now that we have a list of buckets/sequencing runs, let's look inside of each sequencing run to see what files are included in that run.  In general, each sequencing run includes roughtly 450 GB of sequencing data from 600ish libraries:
+                    PRE 2024-openwings-FB01Q001/
+# now that we have a list of buckets/sequencing runs (right now just showing 2024-openwings-FB01Q001),
+# let's look inside of each sequencing run to see what files are included in that run.  
+# In general, each sequencing run includes roughtly 450 GB of sequencing data from 600ish libraries:
 aws s3 ls s3://openwings-project/data/2024-openwings-FB01Q001
 
 # which returns (truncated):
@@ -56,7 +58,6 @@ aws s3 ls s3://openwings-project/data/2024-openwings-FB01Q001
 2025-06-02 12:57:42  322739926 B-10703.LSUMZ.TISS-9:A4.Liosceles-thoracicus.R1.fq.gz
 2025-06-02 12:57:42  329907755 B-10703.LSUMZ.TISS-9:A4.Liosceles-thoracicus.R2.fq.gz
 ...
-
 
 # let's say you want to download the data for the B-66112.LSUMZ.TISS-3:A1.
 # Crypturellus-transfasciatus.R1.fq.gz library.
