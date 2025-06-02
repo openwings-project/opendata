@@ -33,7 +33,7 @@ The file naming convention is:
 
 ## Downloading the data
 
-Before downloading any data, install the [AWS Command Line Interface](https://aws.amazon.com/cli/) for your operating system.  Advanced users may also use other options (e.g. [boto](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html), etc.), but these are not described here.  The bucket in which all files are stored is <tbd>.
+Before downloading any data, install the [AWS Command Line Interface](https://aws.amazon.com/cli/) for your operating system.  Advanced users may also use other options (e.g. [boto](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html), etc.), but these are not described here.  The top-level bucket in which all files are stored is [s3://openwings-project/](s3://openwings-project/).
 
 ### Downloading a small number of files
 
@@ -41,22 +41,30 @@ The data are temporarily stored (see [NCBI SRA Identifiers](#ncbi-sra-identifier
 ```bash
 # be sure that the AWS CLI is installed and configured correctly.
 # Show the contents of the openwings project:
-aws s3 ls s3://<tbd>/
+aws s3 ls s3://openwings-project/data/
 
-# now that we have a list of buckets/sequencing runs, let's look inside of each sequencing run to see what files are included in that run:
-aws s3 ls s3://<tbd>/2024-openwings-FB01Q001
+# now that we have a list of buckets/sequencing runs, let's look inside of each sequencing run to see what files are included in that run.  In general, each sequencing run includes roughtly 450 GB of sequencing data from 600ish libraries:
+aws s3 ls s3://openwings-project/data/2024-openwings-FB01Q001
 
-# which returns:
-...<tbd>...
+# which returns (truncated):
+2025-06-02 12:57:15  313848551 B-10338.LSUMZ.TISS-3:D4.Rhea-pennata.R1.fq.gz
+2025-06-02 12:57:15  327712812 B-10338.LSUMZ.TISS-3:D4.Rhea-pennata.R2.fq.gz
+2025-06-02 12:57:15  264624310 B-10387.LSUMZ.TISS-6:B6.Incaspiza-pulchra.R1.fq.gz
+2025-06-02 12:57:15  274103714 B-10387.LSUMZ.TISS-6:B6.Incaspiza-pulchra.R2.fq.gz
+2025-06-02 12:57:15  516552614 B-10617.LSUMZ.TISS-10:B1.Brachygalba-albogularis.R1.fq.gz
+2025-06-02 12:57:42  530902095 B-10617.LSUMZ.TISS-10:B1.Brachygalba-albogularis.R2.fq.gz
+2025-06-02 12:57:42  322739926 B-10703.LSUMZ.TISS-9:A4.Liosceles-thoracicus.R1.fq.gz
+2025-06-02 12:57:42  329907755 B-10703.LSUMZ.TISS-9:A4.Liosceles-thoracicus.R2.fq.gz
+...
 
 
 # let's say you want to download the data for the B-66112.LSUMZ.TISS-3:A1.
 # Crypturellus-transfasciatus.R1.fq.gz library.
 #
 # To download individual files to the local directory in which you are working, you can:
-aws s3 cp s3://<tbd>/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R1.fq.gz ./
+aws s3 cp s3://openwings-project/data/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R1.fq.gz ./
 # followed by
-aws s3 cp s3://<tbd>/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R2.fq.gz ./
+aws s3 cp s3://openwings-project/data/2024-openwings-FB01Q001/B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus.R2.fq.gz ./
 # this gets's the R1 (read 1) and R2 (read 2) files for this individual 
 # (B-66112.LSUMZ.TISS-3:A1.Crypturellus-transfasciatus) from S3 and
 # saves them locally on your machine.
@@ -82,8 +90,8 @@ unset saved_IFS
 while IFS=, read f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11; 
 do 
     echo "Working on ${f1}";
-    aws s3 cp <url>/${f8}/${f9} ./;
-    aws s3 cp <url>/${f8}/${f10} ./;
+    aws s3 cp s3://openwings-project/data/${f8}/${f9} ./;
+    aws s3 cp s3://openwings-project/data/${f8}/${f10} ./;
 done < <( tail -n +2 "$input")
 # Restore whatever IFS originally was
 unset IFS
