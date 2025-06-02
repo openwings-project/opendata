@@ -43,9 +43,12 @@ The data are temporarily stored (see [NCBI SRA Identifiers](#ncbi-sra-identifier
 # Show the contents of the openwings project:
 aws s3 ls s3://openwings-project/data/
                     PRE 2024-openwings-FB01Q001/
-# now that we have a list of buckets/sequencing runs (right now just showing 2024-openwings-FB01Q001),
-# let's look inside of each sequencing run to see what files are included in that run.  
-# In general, each sequencing run includes roughtly 450 GB of sequencing data from 600ish libraries:
+                    
+# now that we have a list of buckets/sequencing runs 
+# (right now just showing 2024-openwings-FB01Q001),
+# let's look inside of each sequencing run to see what 
+# files are included in that run.  In general, each sequencing 
+# run includes roughtly 450 GB of sequencing data from 600ish libraries:
 aws s3 ls s3://openwings-project/data/2024-openwings-FB01Q001
 
 # which returns (truncated):
