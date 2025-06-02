@@ -33,7 +33,7 @@ The file naming convention is:
 
 ## Downloading the data
 
-Before downloading any data, install the [AWS Command Line Interface](https://aws.amazon.com/cli/) for your operating system.  Advanced users may also use other options (e.g. [boto](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html), etc.), but these are not described here.  The top-level bucket in which all files are stored is [s3://openwings-project/](s3://openwings-project/).
+Before downloading any data, install the [AWS Command Line Interface](https://aws.amazon.com/cli/) for your operating system.  Advanced users may also use other options (e.g. [boto](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html), etc.), but these are not described here.  The top-level bucket in which all files are stored is `s3://openwings-project/`.
 
 ### Downloading a small number of files
 
